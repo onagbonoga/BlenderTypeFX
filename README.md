@@ -9,6 +9,7 @@ With BlenderTypeFX, you can achieve professional-looking text animations directl
 - Simulate typing animations
 - Specify start frames
 - Customize animation speed (frame offset)
+- Specify custom fonts
 - Intuitive user interface
 - Easy integration into your Blender projects
 
@@ -25,8 +26,9 @@ To install BlenderTypeFX, follow these steps:
 1. Once the add-on is installed and enabled, you can access it in the Blender interface.
 2. Look for the "BlenderTypeFX" panel, which should be located in the sidebar in the 3D viewport (press N to open it) or another relevant location.
 3. Use the intuitive controls provided by BlenderTypeFX to customize your text animations. You can adjust parameters
-4. Experiment with different settings until you achieve the desired text effect.
-5. Enjoy your animated text in Blender!
+4. Every animation will come with an empty which you can use to transform the associated text objects
+5. Experiment with different settings until you achieve the desired text effect.
+6. Enjoy your animated text in Blender!
 
 ## Support and Issues
 If you encounter any issues or have feature requests for BlenderTypeFX, please visit the GitHub repository's Issues tab: [link to Issues](https://github.com/onagbonoga/BlenderTypeFX/issues). I appreciate your feedback and will do our best to address any problems or suggestions.
