@@ -70,20 +70,23 @@ class TA_Animate_Text(bpy.types.Operator):
             # set key frames
             
             # parent object to emptty
-            objectName = bpy.context.scene.objects[-1].name
-            bpy.data.objects[objectName].parent = bpy.data.objects[emptyName]
+            #objectName = bpy.context.scene.objects[-1].name
+            objectName = bpy.context.object.name
+            #bpy.data.objects[objectName].parent = bpy.data.objects[emptyName]
+            obj = bpy.data.objects[objectName]
+            obj.parent = bpy.data.objects[emptyName]
             
             # hide everything in the first frame
-            bpy.data.objects[objectName].hide_render = True
-            bpy.data.objects[objectName].hide_viewport = True
-            bpy.data.objects[objectName].keyframe_insert(data_path = "hide_viewport", frame = 0)
-            bpy.data.objects[objectName].keyframe_insert(data_path = "hide_render", frame = 0)
+            obj.hide_render = True
+            obj.hide_viewport = True
+            obj.keyframe_insert(data_path = "hide_viewport", frame = 0)
+            obj.keyframe_insert(data_path = "hide_render", frame = 0)
             
             # show object in the specified frame
-            bpy.data.objects[objectName].hide_render = False
-            bpy.data.objects[objectName].hide_viewport = False
-            bpy.data.objects[objectName].keyframe_insert(data_path = "hide_viewport", frame = showFrame)
-            bpy.data.objects[objectName].keyframe_insert(data_path = "hide_render", frame = showFrame)
+            obj.hide_render = False
+            obj.hide_viewport = False
+            obj.keyframe_insert(data_path = "hide_viewport", frame = showFrame)
+            obj.keyframe_insert(data_path = "hide_render", frame = showFrame)
             
             locationX += (radius/2)
             showFrame += frameStep
@@ -102,21 +105,10 @@ class TA_Animate_Text(bpy.types.Operator):
             
         return {'FINISHED'}
     
-# reset operator
-class TA_Animate_Reset(bpy.types.Operator):
-    '''reset text'''
-    bl_idname = "ta.reset"
-    bl_label = "text animate reset"
-    bl_options = {'REGISTER'}
-    
-    def execute(self, context): # runs when called
-        # ainimate text
-        return {'FINISHED'}
-    
 class TA_PT_View(bpy.types.Panel):
     bl_space_type = 'VIEW_3D'
     bl_region_type = 'UI'
-    bl_category = "BLENDER_TYPEFX"
+    bl_category = "Blender_TypeFX"
     bl_label = "Animate Text input"
     
     def draw(self, context):
@@ -162,8 +154,6 @@ class TA_PT_View(bpy.types.Panel):
         self.layout.operator("ta.animate", text = "Animate",
         icon = "PLAY")
         
-        # reset button
-        #self.layout.operator("ta.reset", text = "Reset")
         
 def register():
     
@@ -180,11 +170,8 @@ def register():
     
     # register operators
     bpy.utils.register_class(TA_Animate_Text)
-    #bpy.utils.register_class(TA_Animate_Reset)
     
 def unregister():
     bpy.utils.unregister_class(TA_PT_View)
     bpy.utils.unregister_class(TA_Animate_Text)
-    #bpy.utils.unregister_class(TA_Animate_Reset)
     
-register()

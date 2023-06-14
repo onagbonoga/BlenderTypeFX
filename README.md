@@ -1,12 +1,12 @@
 # BlenderTypeFX
-
+![logo](https://github.com/onagbonoga/BlenderTypeFX/blob/main/images/logo.png)
 ## About
 BlenderTypeFX is a add-on for Blender that allows you to create animated text effects with ease. Whether you need to simulate typing, reveal text gradually, or add eye-catching animations to your text, BlenderTypeFX has got you covered.
 
 With BlenderTypeFX, you can achieve professional-looking text animations directly in Blender, without the need for external tools or complicated workflows. It simplifies the process of creating engaging text effects, saving you time and effort.
 
 ## Features
-- Simulate typing animations
+- Simulate typing animations from a text box input or a text file
 - Specify start frames
 - Customize animation speed (frame offset)
 - Specify custom fonts
