@@ -49,6 +49,7 @@ class TA_Animate_Text(bpy.types.Operator):
             with open(textFilePath) as f:
                 text = f.read()
                 print(text)
+
         # add text one by one at specified radius with spacing
         locationX = 0
         locationY = 0
@@ -69,10 +70,8 @@ class TA_Animate_Text(bpy.types.Operator):
             
             # set key frames
             
-            # parent object to emptty
-            #objectName = bpy.context.scene.objects[-1].name
+            # parent object to empty
             objectName = bpy.context.object.name
-            #bpy.data.objects[objectName].parent = bpy.data.objects[emptyName]
             obj = bpy.data.objects[objectName]
             obj.parent = bpy.data.objects[emptyName]
             
@@ -162,7 +161,7 @@ def register():
     bpy.types.Scene.ta_text_file = bpy.props.StringProperty(name="", subtype='FILE_PATH')
     bpy.types.Scene.ta_start = bpy.props.IntProperty(name="", default = 1)
     bpy.types.Scene.ta_n_per_line = bpy.props.IntProperty(name="", default = 10)
-    bpy.types.Scene.ta_frame_step = bpy.props.IntProperty(name="", default = 1)
+    bpy.types.Scene.ta_frame_step = bpy.props.IntProperty(name="", default = 4)
     bpy.types.Scene.ta_font = bpy.props.StringProperty(name="", subtype='FILE_PATH')
     
     # register panel

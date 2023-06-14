@@ -36,9 +36,6 @@ If you encounter any issues or have feature requests for BlenderTypeFX, please v
 ## Compatibility
 BlenderTypeFX is developed and tested on Blender version 3.5. 
 
-## Credits
-BlenderTypeFX is developed and maintained by Nurudeen. We would like to thank the Blender community for their support and inspiration.
-
 ## License
 BlenderTypeFX is released under the [MIT License](https://opensource.org/licenses/MIT). Please refer to the LICENSE file in the repository for more information.
 
