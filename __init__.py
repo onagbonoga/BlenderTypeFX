@@ -42,7 +42,7 @@ class TA_Animate_Text(bpy.types.Operator):
         startFrame = bpy.context.scene.ta_start
         wordsPerLine = bpy.context.scene.ta_n_per_line
         textFile = bpy.context.scene.ta_text_file
-        spacing = bpy.context.scene.ta_spacing
+        
         # load text from text file if available
         if not(textFile == "" or textFile == " "): 
             textFilePath = bpy.path.abspath(textFile)
@@ -60,6 +60,14 @@ class TA_Animate_Text(bpy.types.Operator):
         wordCount = 0
         radius = 0.3
         for c in text:
+            if c == 'i' or c == "I" or c == "l" or c == "t":
+                spacing = bpy.context.scene.ta_spacing/ 1.5
+            elif c == "m" or c == "M" or c == "w" or c == "W":
+                spacing = bpy.context.scene.ta_spacing * 1.5
+            elif c == "f":
+                spacing = bpy.context.scene.ta_spacing/ 1.2
+            else:
+                spacing = bpy.context.scene.ta_spacing
             bpy.ops.object.text_add(radius = radius, location = [locationX,locationY,0])
             bpy.context.object.data.body = c
             
@@ -180,3 +188,4 @@ def register():
 def unregister():
     bpy.utils.unregister_class(TA_PT_View)
     bpy.utils.unregister_class(TA_Animate_Text)
+    
