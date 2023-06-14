@@ -16,7 +16,7 @@ With BlenderTypeFX, you can achieve professional-looking text animations directl
 ## Installation
 To install BlenderTypeFX, follow these steps:
 1. Visit the GitHub repository: [link to repository](https://github.com/onagbonoga/BlenderTypeFX)
-2. Click on the green "Code" button and select "Download ZIP" to download the add-on.
+2. Click on the latest release on the right side of the page under 'Releases' and download the source code
 3. Open Blender and go to Edit (top left of the Blender window) -> Preferences -> Add-ons.
 4. Click on the "Install" button and navigate to the downloaded ZIP file.
 5. Select the ZIP file and click "Install Add-on".

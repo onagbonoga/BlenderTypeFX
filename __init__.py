@@ -42,7 +42,7 @@ class TA_Animate_Text(bpy.types.Operator):
         startFrame = bpy.context.scene.ta_start
         wordsPerLine = bpy.context.scene.ta_n_per_line
         textFile = bpy.context.scene.ta_text_file
-        
+        spacing = bpy.context.scene.ta_spacing
         # load text from text file if available
         if not(textFile == "" or textFile == " "): 
             textFilePath = bpy.path.abspath(textFile)
@@ -53,12 +53,12 @@ class TA_Animate_Text(bpy.types.Operator):
         # add text one by one at specified radius with spacing
         locationX = 0
         locationY = 0
-        radius = 0.3
         showFrame = startFrame
         # add empty to control position of everything
         bpy.ops.object.empty_add(type="PLAIN_AXES")
         emptyName = bpy.context.scene.objects[-1].name
         wordCount = 0
+        radius = 0.3
         for c in text:
             bpy.ops.object.text_add(radius = radius, location = [locationX,locationY,0])
             bpy.context.object.data.body = c
@@ -87,7 +87,7 @@ class TA_Animate_Text(bpy.types.Operator):
             obj.keyframe_insert(data_path = "hide_viewport", frame = showFrame)
             obj.keyframe_insert(data_path = "hide_render", frame = showFrame)
             
-            locationX += (radius/2)
+            locationX += spacing
             showFrame += frameStep
             
             # keep track of word count and update y location
@@ -130,6 +130,12 @@ class TA_PT_View(bpy.types.Panel):
         row.label(text="Font:")
         row = self.layout.row()
         row.prop(context.scene, "ta_font")
+
+        # character spacing input field
+        row = self.layout.row()
+        row.label(text="Character Spacing:")
+        row = self.layout.row()
+        row.prop(context.scene, "ta_spacing")
         
         # frame start field
         row = self.layout.row()
@@ -159,6 +165,7 @@ def register():
     # register propertiies
     bpy.types.Scene.ta_text = bpy.props.StringProperty(name="")
     bpy.types.Scene.ta_text_file = bpy.props.StringProperty(name="", subtype='FILE_PATH')
+    bpy.types.Scene.ta_spacing = bpy.props.FloatProperty(name="", default = 0.15)
     bpy.types.Scene.ta_start = bpy.props.IntProperty(name="", default = 1)
     bpy.types.Scene.ta_n_per_line = bpy.props.IntProperty(name="", default = 10)
     bpy.types.Scene.ta_frame_step = bpy.props.IntProperty(name="", default = 4)
@@ -173,4 +180,3 @@ def register():
 def unregister():
     bpy.utils.unregister_class(TA_PT_View)
     bpy.utils.unregister_class(TA_Animate_Text)
-    
