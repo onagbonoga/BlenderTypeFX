@@ -64,7 +64,7 @@ class TA_Animate_Text(bpy.types.Operator):
         for c in text:
             if c == 'i' or c == "I" or c == "l" or c == "t":
                 spacing = bpy.context.scene.ta_spacing/ 1.5
-            elif c == "m" or c == "M" or c == "w" or c == "W":
+            elif c == "m" or c == "M" or c == "w" or c == "W" or c == "H":
                 spacing = bpy.context.scene.ta_spacing * 1.5
             elif c == "f":
                 spacing = bpy.context.scene.ta_spacing/ 1.2
