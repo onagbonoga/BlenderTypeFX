@@ -56,7 +56,9 @@ class TA_Animate_Text(bpy.types.Operator):
         showFrame = startFrame
         # add empty to control position of everything
         bpy.ops.object.empty_add(type="PLAIN_AXES")
-        emptyName = bpy.context.scene.objects[-1].name
+        emptyName = "text_" + str(bpy.context.scene.ta_txt_count)
+        bpy.context.object.name = emptyName
+        bpy.context.scene.ta_txt_count += 1
         wordCount = 0
         radius = 0.3
         for c in text:
@@ -178,6 +180,8 @@ def register():
     bpy.types.Scene.ta_n_per_line = bpy.props.IntProperty(name="", default = 10)
     bpy.types.Scene.ta_frame_step = bpy.props.IntProperty(name="", default = 4)
     bpy.types.Scene.ta_font = bpy.props.StringProperty(name="", subtype='FILE_PATH')
+    bpy.types.Scene.ta_txt_count = bpy.props.IntProperty(name="", default = 1)
+    
     
     # register panel
     bpy.utils.register_class(TA_PT_View)
